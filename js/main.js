@@ -12,7 +12,7 @@ function init() {
             col.setAttribute("class", "col-12");
             var head = document.createElement("h2");
             var sub = document.createElement("p");
-            head.setAttribute("class", "mx-auto turrentFont text-center display-4");
+            head.setAttribute("class", "mx-auto turrentFont text-center display-5");
             head.innerHTML = "CALCULATRON"
             sub.setAttribute("class", "text-muted mx-auto text-center turrentFont display-5");
             sub.innerHTML = "I crunch numbers... and souls"
@@ -28,7 +28,7 @@ function init() {
             row.appendChild(col);
         } else if (i == 2) {
             var calc = document.createElement("div");
-            calc.setAttribute("class","container-fluid");
+            calc.setAttribute("class","container");
             for (var j = 0; j < 17; j++) {
                 var button = document.createElement("div");
                 if (j == 0 || j == 1 || j == 14) {
@@ -40,8 +40,8 @@ function init() {
                     button.setAttribute("id", j);
                     button.innerHTML = "x";
                 }
-                calc.appendChild(button);
-                row.appendChild(calc);
+                row.appendChild(button);
+                //row.appendChild(calc);
             }
 
         }
