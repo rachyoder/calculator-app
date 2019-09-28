@@ -40,7 +40,7 @@ function operation(first, second, op) {
 /* Button Clicking */
 async function btnClick(e) {
     var btnString = e.target.id.split("_");
-    var btnPressed = btnString[1];
+    var btnPressed = btnString[1];``
     console.log(btnPressed);
     switch (btnPressed) {
         case "+":
@@ -55,7 +55,7 @@ async function btnClick(e) {
             operator = btnPressed;
             break;
         case "=":
-            if (previousOperator != "") {
+            if (secondNumber == "") {
                 firstNumber = operation(firstNumber, previousSecondNum, previousOperator);
                 display.innerHTML = firstNumber;
                 break;
