@@ -1,6 +1,6 @@
 /* Global Variables */
 var app = document.getElementById("app");
-var display = document.createElement("h3");
+var display = document.createElement("div");
 var btnContent = [
     "Clear", "/",
     "7", "8", "9", "*",
@@ -29,12 +29,12 @@ function init() {
             row.appendChild(col);
         } else if (i == 1) {
             /* Display Setup */
-            col.setAttribute("class", "col-12 border text-white bg-dark rounded");
-            display.setAttribute("class", "startFont py-2 my-0 float-right");
+            display.setAttribute("class", "col-12 border text-white bg-dark startFont py-2 my-0 text-right overflow-auto rounded");
+            //display.setAttribute("class", "startFont py-2 my-0 float-right");
             display.setAttribute("id","display");
             display.innerHTML = "0";
-            col.appendChild(display);
-            row.appendChild(col);
+            row.appendChild(display);
+            //row.appendChild(col);
         } else if (i == 2) {
             /* Button Setup */
             var calc = document.createElement("div");
