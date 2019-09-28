@@ -14,17 +14,8 @@ async function btnClick(e) {
     console.log(btnPressed);
     switch (btnPressed) {
         case "+":
-            operator = btnPressed;
-            display.innerHTML = btnPressed;
-            break;
         case "-":
-            operator = btnPressed;
-            display.innerHTML = btnPressed;
-            break;
         case "*":
-            operator = btnPressed;
-            display.innerHTML = btnPressed;
-            break;
         case "/":
             operator = btnPressed;
             display.innerHTML = btnPressed;
@@ -39,16 +30,36 @@ async function btnClick(e) {
             display.innerHTML = "0";
             break;
         case ".":
-            //if (operator != "")
-        default: 
             if (operator != "") {
-                secondNumber += btnPressed;
-                display.innerHTML = secondNumber;
+                if (secondNumber.includes('.') == true) {
+                    break;
+                } else {
+                    secondNumber += btnPressed;
+                    display.innerHTML = secondNumber;
+                    break;
+                }
             } else {
-                firstNumber += btnPressed;
-                display.innerHTML = firstNumber;
+                if (firstNumber.includes('.') == true) {
+                    break;
+                } else {
+                    firstNumber += btnPressed;
+                    display.innerHTML = firstNumber;
+                    break;
+                }
+            }
+        default:
+            if (firstNumber.length >= 10 || secondNumber.length >= 10) {
+                break;
+            } else {
+                if (operator != "") {
+                    secondNumber += btnPressed;
+                    display.innerHTML = secondNumber;
+                } else {
+                    firstNumber += btnPressed;
+                    display.innerHTML = firstNumber;
+                }
             }
     }
-    console.log("firstNumber: ",firstNumber);
-    console.log("secondNumber: ",secondNumber);
+    console.log("firstNumber: ", firstNumber);
+    console.log("secondNumber: ", secondNumber);
 }
