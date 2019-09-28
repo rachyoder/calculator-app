@@ -1,5 +1,5 @@
 /* Global Variables */
-var firstNumber = "";
+var firstNumber = "0";
 var secondNumber = "";
 var operator = "";
 var result = "";
@@ -10,21 +10,26 @@ function operation(first, second, op) {
     var total = null;
     switch (op) {
         case "+":
-           total  = parseInt(first) + parseInt(second);
-           return total.toString();
-           break;
+            total = parseFloat(first) + parseFloat(second);
+            break;
         case "-":
-            total = parseInt(first) - parseInt(second);
-            return total.toString();
+            total = parseFloat(first) - parseFloat(second);
             break;
         case "*":
-            total = parseInt(first) * parseInt(second);
-            return total.toString();
+            total = parseFloat(first) * parseFloat(second);
             break;
         case "/":
-            total = parseInt(first) / parseInt(second);
-            return total.toString();
-            break;
+            if (secondNumber == 0) {
+                return "undefined";
+            } else {
+                total = parseFloat(first) / parseFloat(second);
+                break;
+            }
+    }
+    if (isNaN(total) == true) {
+        return "undefined";
+    } else {
+        return total.toString();
     }
 }
 
@@ -44,6 +49,8 @@ async function btnClick(e) {
             break;
         case "=":
             result = operation(firstNumber, secondNumber, operator);
+            secondNumber = "";
+            firstNumber = result;
             display.innerHTML = result;
             break;
         case "Clear":
