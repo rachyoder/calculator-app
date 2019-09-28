@@ -5,6 +5,28 @@ var operator = "";
 var result = "";
 var display = document.getElementById("display");
 
+/* Operations */
+function operation(first, second, op) {
+    var total = null;
+    switch (op) {
+        case "+":
+           total  = parseInt(first) + parseInt(second);
+           return total.toString();
+           break;
+        case "-":
+            total = parseInt(first) - parseInt(second);
+            return total.toString();
+            break;
+        case "*":
+            total = parseInt(first) * parseInt(second);
+            return total.toString();
+            break;
+        case "/":
+            total = parseInt(first) / parseInt(second);
+            return total.toString();
+            break;
+    }
+}
 
 /* Button Clicking */
 async function btnClick(e) {
@@ -21,6 +43,8 @@ async function btnClick(e) {
             display.innerHTML = btnPressed;
             break;
         case "=":
+            result = operation(firstNumber, secondNumber, operator);
+            display.innerHTML = result;
             break;
         case "Clear":
             firstNumber = "";
