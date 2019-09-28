@@ -8,3 +8,9 @@ html, body {
 .startFont {
     font-family: 'Press Start 2P', cursive;
 }
+.button:hover {
+    background-color: #666666 !important;
+}
+.button:active {
+    background-color: #666666 !important;
+}

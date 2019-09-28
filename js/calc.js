@@ -1,12 +1,17 @@
 /* Global Variables */
-var firstNumber = "0";
+var firstNumber = "";
 var secondNumber = "";
 var operator = "";
+var previousOperator = "";
+var previousSecondNum = "";
 var display = document.getElementById("display");
 
 /* Operations */
 function operation(first, second, op) {
     var total = null;
+    if (first == "") {
+        first = "0";
+    }
     switch (op) {
         case "+":
             total = parseFloat(first) + parseFloat(second);
@@ -25,7 +30,6 @@ function operation(first, second, op) {
                 break;
             }
     }
-    secondNumber = "";
     if (isNaN(total) == true) {
         return "undefined";
     } else {
@@ -35,7 +39,6 @@ function operation(first, second, op) {
 
 /* Button Clicking */
 async function btnClick(e) {
-    //console.log(e.target.id);
     var btnString = e.target.id.split("_");
     var btnPressed = btnString[1];
     console.log(btnPressed);
@@ -45,20 +48,33 @@ async function btnClick(e) {
         case "*":
         case "/":
             if (secondNumber != "") {
-                firstNumber = operation(firstNumber,secondNumber,operator)
+                firstNumber = operation(firstNumber, secondNumber, operator)
+                secondNumber = "";
                 display.innerHTML = firstNumber;
             }
             operator = btnPressed;
             break;
         case "=":
-            firstNumber = operation(firstNumber, secondNumber, operator);
-            //secondNumber = "";
-            display.innerHTML = firstNumber;
-            break;
-        case "Clear":
+            if (previousOperator != "") {
+                firstNumber = operation(firstNumber, previousSecondNum, previousOperator);
+                display.innerHTML = firstNumber;
+                break;
+            } else {
+                firstNumber = operation(firstNumber, secondNumber, operator);
+                previousOperator = operator;
+                previousSecondNum = secondNumber;
+                secondNumber = "";
+                console.log("previousOp: ", operator);
+                console.log("previousNum: ", previousSecondNum);
+                display.innerHTML = firstNumber;
+                break;
+            }
+            case "Clear":
             firstNumber = "";
             secondNumber = "";
             operator = "";
+            previousOperator = "";
+            previousSecondNum = "";
             result = "";
             display.innerHTML = "0";
             break;
@@ -81,12 +97,16 @@ async function btnClick(e) {
                 }
             }
         default:
-            if (firstNumber.length >= 10 || secondNumber.length >= 10) {
-                break;
-            } else {
-                if (operator != "") {
+            if (operator != "") {
+                if (secondNumber.length >= 10) {
+                    break;
+                } else {
                     secondNumber += btnPressed;
                     display.innerHTML = secondNumber;
+                }
+            } else {
+                if (firstNumber.length >= 10) {
+                    break;
                 } else {
                     firstNumber += btnPressed;
                     display.innerHTML = firstNumber;

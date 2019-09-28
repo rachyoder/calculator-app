@@ -23,7 +23,7 @@ function init() {
             head.setAttribute("class", "mx-auto turrentFont text-center display-5");
             head.innerHTML = "CALCULATRON"
             sub.setAttribute("class", "text-muted mx-auto text-center turrentFont display-5");
-            sub.innerHTML = "I crunch numbers... and souls"
+            sub.innerHTML = "I crunch numbers... and skulls"
             col.appendChild(head);
             col.appendChild(sub);
             row.appendChild(col);
@@ -42,9 +42,9 @@ function init() {
             for (var j = 0; j < btnContent.length; j++) {
                 var button = document.createElement("div");
                 if (j == 0 || j == 1 || j == 14) {
-                    button.setAttribute("class", "col-6 border rounded m-0 py-3 px-3 text-center text-white bg-secondary");
+                    button.setAttribute("class", "col-6 border button rounded m-0 py-3 px-3 text-center text-white bg-secondary");
                 } else {
-                    button.setAttribute("class", "col-3 border rounded m-0 py-3 py-3 text-center text-white bg-secondary");
+                    button.setAttribute("class", "col-3 border button rounded m-0 py-3 py-3 text-center text-white bg-secondary");
                 }
                 button.innerHTML = btnContent[j];
                 button.setAttribute("id", "btn_" + btnContent[j]);
