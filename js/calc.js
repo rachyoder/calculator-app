@@ -2,7 +2,6 @@
 var firstNumber = "0";
 var secondNumber = "";
 var operator = "";
-var result = "";
 var display = document.getElementById("display");
 
 /* Operations */
@@ -26,6 +25,7 @@ function operation(first, second, op) {
                 break;
             }
     }
+    secondNumber = "";
     if (isNaN(total) == true) {
         return "undefined";
     } else {
@@ -44,14 +44,16 @@ async function btnClick(e) {
         case "-":
         case "*":
         case "/":
+            if (secondNumber != "") {
+                firstNumber = operation(firstNumber,secondNumber,operator)
+                display.innerHTML = firstNumber;
+            }
             operator = btnPressed;
-            display.innerHTML = btnPressed;
             break;
         case "=":
-            result = operation(firstNumber, secondNumber, operator);
-            secondNumber = "";
-            firstNumber = result;
-            display.innerHTML = result;
+            firstNumber = operation(firstNumber, secondNumber, operator);
+            //secondNumber = "";
+            display.innerHTML = firstNumber;
             break;
         case "Clear":
             firstNumber = "";
