@@ -1,5 +1,6 @@
 /* Global Variables */
 var app = document.getElementById("app");
+var display = document.createElement("h3");
 var btnContent = [
     "Clear", "/",
     "7", "8", "9", "*",
@@ -7,6 +8,7 @@ var btnContent = [
     "1", "2", "3", "+",
     "0", ".", "="
 ];
+
 /* Initial Page Setup */
 function init() {
     app.setAttribute("class", "container");
@@ -26,13 +28,15 @@ function init() {
             col.appendChild(sub);
             row.appendChild(col);
         } else if (i == 1) {
+            /* Display Setup */
             col.setAttribute("class", "col-12 border text-white bg-dark rounded");
-            var display = document.createElement("h3");
-            display.setAttribute("class", "startFont py-2 my-0 float-right")
-            display.innerHTML = 0;
+            display.setAttribute("class", "startFont py-2 my-0 float-right");
+            display.setAttribute("id","display");
+            display.innerHTML = "0";
             col.appendChild(display);
             row.appendChild(col);
         } else if (i == 2) {
+            /* Button Setup */
             var calc = document.createElement("div");
             calc.setAttribute("class", "container");
             for (var j = 0; j < btnContent.length; j++) {
@@ -43,7 +47,9 @@ function init() {
                     button.setAttribute("class", "col-3 border rounded m-0 py-3 py-3 text-center text-white bg-secondary");
                 }
                 button.innerHTML = btnContent[j];
-                button.setAttribute("id", "btn-" + btnContent[j]);
+                button.setAttribute("id", "btn_" + btnContent[j]);
+                var buttonId = button.getAttribute("id");
+                button.addEventListener("click", btnClick);
                 row.appendChild(button);
             }
 
