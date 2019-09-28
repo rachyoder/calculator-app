@@ -1,5 +1,9 @@
+html, body {
+    background-color: #990033;
+}
 .turrentFont {
     font-family: 'Turret Road', cursive;
+    color: white !important;
 }
 .startFont {
     font-family: 'Press Start 2P', cursive;
