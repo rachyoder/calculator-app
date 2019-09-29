@@ -4,7 +4,19 @@ var secondNumber = "";
 var operator = "";
 var previousOperator = "";
 var previousSecondNum = "";
+var lastBtn = "";
 var display = document.getElementById("display");
+
+/* Clear Function */
+function clear() {
+    firstNumber = "";
+    secondNumber = "";
+    operator = "";
+    previousOperator = "";
+    previousSecondNum = "";
+    result = "";
+    lastBtn = "";
+}
 
 /* Operations */
 function operation(first, second, op) {
@@ -40,7 +52,7 @@ function operation(first, second, op) {
 /* Button Clicking */
 async function btnClick(e) {
     var btnString = e.target.id.split("_");
-    var btnPressed = btnString[1];``
+    var btnPressed = btnString[1];
     console.log(btnPressed);
     switch (btnPressed) {
         case "+":
@@ -69,13 +81,8 @@ async function btnClick(e) {
                 display.innerHTML = firstNumber;
                 break;
             }
-            case "Clear":
-            firstNumber = "";
-            secondNumber = "";
-            operator = "";
-            previousOperator = "";
-            previousSecondNum = "";
-            result = "";
+        case "Clear":
+            clear();
             display.innerHTML = "0";
             break;
         case ".":
@@ -97,6 +104,9 @@ async function btnClick(e) {
                 }
             }
         default:
+            if (lastBtn == "=") {
+                clear();
+            }
             if (operator != "") {
                 if (secondNumber.length >= 10) {
                     break;
@@ -112,7 +122,10 @@ async function btnClick(e) {
                     display.innerHTML = firstNumber;
                 }
             }
+
     }
-    console.log("firstNumber: ", firstNumber);
-    console.log("secondNumber: ", secondNumber);
+    lastBtn = btnPressed;
+    console.log("firstNum: ", firstNumber);
+    console.log("secondNum: ", secondNumber);
+    console.log()
 }
