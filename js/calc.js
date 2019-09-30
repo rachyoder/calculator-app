@@ -7,6 +7,7 @@ var previousSecondNum = "";
 var lastBtn = "";
 var display = document.getElementById("display");
 
+
 /* Clear Function */
 function clear() {
     firstNumber = "";

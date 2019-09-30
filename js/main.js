@@ -48,7 +48,6 @@ function init() {
                 }
                 button.innerHTML = btnContent[j];
                 button.setAttribute("id", "btn_" + btnContent[j]);
-                var buttonId = button.getAttribute("id");
                 button.addEventListener("click", btnClick);
                 row.appendChild(button);
             }

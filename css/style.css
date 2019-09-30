@@ -16,4 +16,5 @@ html, body {
 }
 .button {
     font-size: 2em;
+    cursor: pointer;
 }
